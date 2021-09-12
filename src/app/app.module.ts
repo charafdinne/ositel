@@ -15,7 +15,6 @@ import { CalendarDatePipe } from 'angular-calendar/modules/common/calendar-date.
     AppComponent
   ],
   imports: [
-    CalendarDatePipe,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
