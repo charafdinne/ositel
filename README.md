@@ -1,5 +1,11 @@
 # OsitelTechnicalAssessment
 
+This project is intended for Ositel Coding assessment:
+    - meetings are collected from data.json file under asset/mocks folder
+    - 3 granularities exist : day, week and month
+    - days are clickable
+    - meetings are clickeble and that's how you can view the meeting room.
+  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
 ## Development server
