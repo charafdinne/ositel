@@ -33,17 +33,18 @@ export class AppComponent {
   }
 
   populateEvents(meetings : Meeting[]){
-    console.log(new Date())
+    console.log(meetings)
     for (let meeting of meetings) {
       this.events.push(
         {
-          start: startOfDay(new Date(meeting.start)),
-          end: startOfDay(new Date(meeting.end)),
+          start: new Date(meeting.start),
+          end: new Date(meeting.end),
           title: meeting.name,
           meta : meeting.meetingRoom
         }
       )
     }
+    console.log(this.events)
   }
 
   setView(view: CalendarView) {
