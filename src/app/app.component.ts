@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay, CalendarView } from 'angular-calendar';
-import { isSameDay, isSameMonth, startOfDay} from 'date-fns';
+import { isSameDay, isSameMonth} from 'date-fns';
 import { Meeting } from './core/models';
 import { MeetingsService } from './core/services/meetings-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -27,13 +27,14 @@ export class AppComponent {
 
   modalData: CalendarEvent | undefined;
 
+  constructor(private meetingsService: MeetingsService,private modal: NgbModal) {    
+  }
 
-  constructor(private meetingsService: MeetingsService,private modal: NgbModal) {
-    this.populateEvents(meetingsService.getMeetings());
+  ngOnInit(){
+    this.populateEvents(this.meetingsService.getMeetings());
   }
 
   populateEvents(meetings : Meeting[]){
-    console.log(meetings)
     for (let meeting of meetings) {
       this.events.push(
         {
@@ -44,7 +45,6 @@ export class AppComponent {
         }
       )
     }
-    console.log(this.events)
   }
 
   setView(view: CalendarView) {
@@ -67,7 +67,6 @@ export class AppComponent {
 
   handleEvent(event: CalendarEvent): void {
     this.modalData = event;
-    console.log(this.modalData)
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 }

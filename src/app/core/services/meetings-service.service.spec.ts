@@ -1,16 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MeetingsServiceService } from './meetings-service.service';
+import { MeetingsService } from './meetings-service.service';
 
 describe('MeetingsServiceService', () => {
-  let service: MeetingsServiceService;
+  let service: MeetingsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MeetingsServiceService);
+    service = TestBed.inject(MeetingsService);
+    service.getMeetings();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should return meetings', () => {
+    expect(service.getMeetings()).not.toBeUndefined;
+    expect(service.getMeetings()).not.toEqual([])
+  })
 });

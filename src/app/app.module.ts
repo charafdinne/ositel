@@ -8,21 +8,17 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { FlatpickrModule } from 'angularx-flatpickr';
-
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarDatePipe } from 'angular-calendar/modules/common/calendar-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    CalendarDatePipe,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModalModule,
-    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
