@@ -12,28 +12,35 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
 
+  //modal
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
   
   title = 'ositelTechnicalAssessment';
 
   viewDate: Date = new Date();
 
+  //boolean to view the meetings on clicked day
   activeDayIsOpen: boolean = false;
 
+  //type of view to show (Month/Week/day)
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
 
+  //object containing meetings
   events: CalendarEvent<String>[] = [];
 
+  //data passed to the modal
   modalData: CalendarEvent | undefined;
 
+  //injecting meetingsService to get data from data.json and the service for opening modal windows
   constructor(private meetingsService: MeetingsService,private modal: NgbModal) {    
   }
 
-  ngOnInit(){
+  ngOnInit(){    
     this.populateEvents(this.meetingsService.getMeetings());
   }
 
+  //method populating events from data.json in the calendar
   populateEvents(meetings : Meeting[]){
     for (let meeting of meetings) {
       this.events.push(
@@ -47,10 +54,12 @@ export class AppComponent {
     }
   }
 
+  //changing the view on demand
   setView(view: CalendarView) {
     this.view = view;
   }
 
+  //managing the activeDayIsOpen upon the click on a day in the calendar event
   dayClicked({ day, sourceEvent }: { day: CalendarMonthViewDay; sourceEvent: any; }): void {
     if (isSameMonth(day.date, this.viewDate)) {
       if (

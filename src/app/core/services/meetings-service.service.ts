@@ -9,6 +9,7 @@ export class MeetingsService {
 
   constructor() { }
 
+  //recuperating meetings from data.json file
   getMeetings(): Meeting[] {
     return data.meetings;
   }

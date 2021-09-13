@@ -14,6 +14,7 @@
     </div>
   </div>
 
+  <!-- using calendarDAtePipe to transform current Date -->
   <div class="col-md-4">
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
@@ -33,6 +34,7 @@
   </div>
 </div>
 
+<!-- showing different views depending on the view variable -->
 <div [ngSwitch]="view">
 
   <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
@@ -47,7 +49,7 @@
 
 </div>
 
-
+<!-- the modal template -->
 <ng-template #modalContent let-close="close">
   <div class="modal-header">
     <h5 class="modal-title">{{ modalData?.title }}</h5>
